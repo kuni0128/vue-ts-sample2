@@ -7,8 +7,8 @@ export function createInitialLists(): IList[] {
       name: 'TODO',
       cards: [
         { id: 1, text: 'タスク1' },
-        { id: 2, text: 'タスク2' }
-      ]
+        { id: 2, text: 'タスク2' },
+      ],
     },
     {
       id: 2,
@@ -16,8 +16,8 @@ export function createInitialLists(): IList[] {
       cards: [
         { id: 3, text: 'タスク3' },
         { id: 4, text: 'タスク4' },
-        { id: 5, text: 'タスク5' }
-      ]
-    }
+        { id: 5, text: 'タスク5' },
+      ],
+    },
   ];
 }
