@@ -6,7 +6,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { IList } from '@/types';
+import { createInitialLists } from '@/initialData';
 
 @Component
-export default class Trello extends Vue {}
+export default class Trello extends Vue {
+  public lists: IList[] = createInitialLists();
+}
 </script>
