@@ -1,16 +1,21 @@
 <template>
   <div class="trello">
-    <h1>This is an trello page</h1>
+    <List v-for="list in lists" :key="list.id" :list=list />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import List from '@/components/List.vue';
 import { IList } from '@/types';
 import { createInitialLists } from '@/initialData';
 
-@Component
+@Component({
+  components: {
+    List,
+  },
+})
 export default class Trello extends Vue {
-  public lists: IList[] = createInitialLists();
+  private lists: IList[] = createInitialLists();
 }
 </script>
