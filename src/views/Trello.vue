@@ -19,3 +19,13 @@ export default class Trello extends Vue {
   private lists: IList[] = createInitialLists();
 }
 </script>
+
+<style lang="scss" scoped>
+.trello {
+  display: flex;
+
+  > .list {
+    margin: 1px;
+  }
+}
+</style>

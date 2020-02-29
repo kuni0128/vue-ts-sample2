@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     {{ list.name }}
     <Card v-for="card in list.cards" :key="card.id" :card=card />
   </div>
@@ -20,3 +20,13 @@ export default class List extends Vue {
   private list!: IList;
 }
 </script>
+
+<style lang="scss" scoped>
+.list {
+  border: 1px solid #000000;
+
+  > .card {
+    margin: 1px;
+  }
+}
+</style>

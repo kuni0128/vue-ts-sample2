@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     {{ card.text }}
   </div>
 </template>
@@ -14,3 +14,9 @@ export default class Card extends Vue {
   private card!: ICard;
 }
 </script>
+
+<style lang="scss" scoped>
+.card {
+  border: 1px solid #000000;
+}
+</style>
