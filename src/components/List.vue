@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 import Card from '@/components/Card.vue';
-import { IList } from '@/types';
+import { IList, IAddCardEvent } from '@/types';
 import { PropType, PropOptions } from 'vue';
 
 @Component({
@@ -22,8 +22,10 @@ export default class List extends Vue {
   private list!: IList;
 
   @Emit()
-  private addCard(event: Event & { currentTarget: HTMLInputElement }): void {
-      alert('emit addCard');
+  private addCard(event: Event & { currentTarget: HTMLInputElement }): IAddCardEvent {
+    const text = event.currentTarget.value;
+    event.currentTarget.value = '';
+    return { listId: this.list.id, text };
   }
 }
 </script>
