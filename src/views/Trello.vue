@@ -1,7 +1,7 @@
 <template>
   <div class="trello">
     <div class="board">
-      <List v-for="list in lists" :key="list.id" :list=list />
+      <List v-for="list in lists" :key="list.id" :list=list @add-card="addCard" />
     </div>
     <input type="text" @change="addList" />
   </div>
@@ -31,6 +31,10 @@ export default class Trello extends Vue {
     this.lists.push(newList);
     ++this.listCreatedCount;
     event.currentTarget.value = '';
+  }
+
+  private addCard(): void {
+    alert('v-on addCard');
   }
 }
 </script>
