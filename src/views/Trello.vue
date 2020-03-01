@@ -3,7 +3,11 @@
     <div class="board">
       <List v-for="list in lists" :key="list.id" :list=list @add-card="addCard" />
     </div>
-    <input type="text" @change="addList" />
+    <div class="control-area">
+      <p>追加リスト名<input type="text" @change="addList" /></p>
+      <p>リスト数: {{ listCreatedCount }}</p>
+      <p>カード数: {{ cardCreatedCount }}</p>
+    </div>
   </div>
 </template>
 
@@ -24,7 +28,7 @@ export default class Trello extends Vue {
   private cardCreatedCount = this.lists.map((list) => list.cards.length).reduce((a, x) => a += x);
 
   private addList(event: Event & { currentTarget: HTMLInputElement }): void {
-    ++this.listCreatedCount;
+    this.listCreatedCount++;
     const newList = {
       id: this.listCreatedCount,
       name: event.currentTarget.value,
@@ -37,7 +41,7 @@ export default class Trello extends Vue {
   private addCard({ listId, text }: IAddCardEvent): void {
     const list = this.lists.find((l) => l.id === listId);
     if (list === undefined) { return; }
-    ++this.cardCreatedCount;
+    this.cardCreatedCount++;
     const newCard = { id: this.cardCreatedCount, text };
     list.cards.push(newCard);
   }
@@ -51,5 +55,10 @@ export default class Trello extends Vue {
   > .list {
     margin: 1px;
   }
+}
+
+.control-area {
+  margin-top: 20px;
+  border: 1px solid #000000;
 }
 </style>
